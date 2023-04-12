@@ -1,0 +1,23 @@
+{% extends 'userhome.html'%}
+{% block user %}
+
+<h1 class="text-center text-white" style=" letter-spacing: 1px;font-family:'Times New Roman', Times, serif;font-weight: bold;">Update Profile</h1>
+<div class="card"  >
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-3 text-center"> <label class="form-label" for="{{form.image.id_for_label}}">Profile Picture</label></div>
+      <div class="col">
+          <div class="form-outline mb-4">
+            {{form.image.error}} 
+            {{form.image}}
+            </div>
+      </div>
+  </div>   
+  <div class=" text-center">
+    <button class="btn btn-info ">Update</button>
+  </div>
+</form>
+</div>
+{% endblock user %}

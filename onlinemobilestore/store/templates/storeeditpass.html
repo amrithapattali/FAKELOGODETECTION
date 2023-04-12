@@ -1,0 +1,42 @@
+{% extends 'storehome.html' %}
+{% block store %}
+{% load static %}
+<h1 class="text-center text-white" style=" letter-spacing: 1px;font-family:'Times New Roman', Times, serif;font-weight: bold;">Change Password</h1>
+<div class="jumborton">
+<div class="card ml-2" style="width: 90%;">
+    <form action="" target="side" method="post" enctype="multipart/form-data" class="mr-2"  style="margin-top: 10px;">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-3 text-center"> <label class="form-label" for="{{form.image.id_for_label}}">Current Pssword:</label></div>
+            <div class="col">
+                <div class="form-outline mb-4">
+                  {{form.current_password.error}} 
+                  {{form.current_password}}
+                  </div>
+            </div>
+        </div>   
+        <div class="row">
+            <div class="col-3 text-center"> <label class="form-label" for="{{form.image.id_for_label}}">New Password:</label></div>
+            <div class="col">
+                <div class="form-outline mb-4">
+                  {{form.new_password.error}} 
+                  {{form.new_password}}
+                  </div>
+            </div>
+        </div>   
+        <div class="row">
+            <div class="col-3 text-center"> <label class="form-label" for="{{form.image.id_for_label}}">Confirm Password:</label></div>
+            <div class="col">
+                <div class="form-outline mb-4">
+                  {{form.confirm_password.error}} 
+                  {{form.confirm_password}}
+                  </div>
+            </div>
+        </div>   
+        <div class=" text-center">
+          <button class="btn btn-info ">Submit</button>
+        </div>
+    </form>
+</div>
+</div>
+{% endblock store %}

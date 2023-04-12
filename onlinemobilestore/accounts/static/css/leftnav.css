@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  #leftnav {
+    
+    /* list-style-type: none; */
+    text-align: center;
+    width: 20%;
+    position: fixed;
+  
+    line-height: 60px;
+    background-color: rgb(68, 156, 238);  
+  }
+  
+   #leftnav li {
+    display: block;
+    width: 100%;
+  }
+  
+  #leftnav  li a {
+    display: block ;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    transition: transform 1s ease;
+  }
+  
+  #leftnav  li a:hover {
+    transform: translate(30%,0);
+    border: 2px solid rgba(0, 0, 0, 0.386);
+    border-radius: 5px;
+  }
+
+    
+  .box {
+    float: right;
+    width: 80%;
+    
+    margin-left:20%;
+    background-color: gray;
+}
+
+body {
+  background-color: grey;
+}
+
+#transition {
+  width: 100px;
+  height: 100px;
+  transition: width 2s, height 4s;
+}
+
+#transition:hover {
+  width: 300px;
+  height: 300px;
+}
+

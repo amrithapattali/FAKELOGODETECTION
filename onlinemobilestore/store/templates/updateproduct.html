@@ -1,0 +1,116 @@
+{% extends 'storehome.html'%}
+{% block store %}
+
+<h1 class="text-center text-white" style=" letter-spacing: 1px;font-family:'Times New Roman', Times, serif;font-weight: bold;">Update Products</h1>
+
+
+      <div class="card ml-1 " style="height: 780px;" >
+                            <form style="width: 90%;" method="post" enctype="multipart/form-data">
+                               {% csrf_token %}
+                               <!-- {{form.errors}} -->
+                             <br>
+                              <div class="row">
+                            
+                                      <div class="col-3 text-center"><label class="form-label " for="{{form.image.id_for_label}}">Image :</label></div>
+                                      <div class="col">
+                                          <div class="form-outline mb-4" >
+                                          {{form.image.error}} 
+                                          {{form.image}}
+                                        </div>
+                                      </div>
+                                  </div>                                               
+                          
+                                  <div class="row">
+                                      <div class="col-3 text-center"> <label class="form-label" for="{{form.productname.id_for_label}}">Mobile Name:</label></div>
+                                      <div class="col">
+                                          <div class="form-outline mb-4">
+                                            {{form.productname.error}} 
+                                            {{form.productname}}
+                                            </div>
+                                      </div>
+                                  </div>   
+                            
+                             
+                              <div class="row">
+                                  <div class="col-3 text-center"> <label class="form-label" for="{{form.model.id_for_label}}">Model :</label></div>
+                                  <div class="col">
+                                      <div class="form-outline mb-4 relative" >
+                                      {{form.model.error}}                            
+                                      {{form.model}}
+                                    </div>
+                                  </div>
+                              </div>
+                             
+                              <div class="row">
+                                  <div class="col-3 text-center"><label class="form-label" for="{{form.ram.id_for_label}}">RAM :</label></div>
+                                  <div class="col">
+                                      <div class="form-outline mb-4">
+                                          {{form.ram.error}} 
+                                          {{form.ram}} 
+                                        </div>
+                                  </div>
+                              </div>
+                               
+                                      <div class="row">
+                                      <div class="col-3 text-center"><label class="form-label" for="{{form.rom.id_for_label}}">ROM:</label></div>
+                                      <div class="col"><div class="form-outline mb-4">
+                                          {{form.rom.error}}                                
+                                          {{form.rom}}
+                                        </div>
+                                      </div>                          
+                                      </div>                          
+                                 
+                                  
+                                      <div class="row">
+                                      <div class="col-3 text-center"><label class="form-label" for="{{form.battery.id_for_label}}">Battery :</label></div>
+                                      <div class="col"><div class="form-outline mb-4">
+                                          {{form.battery.error}}                                
+                                          {{form.battery}}
+                                        </div>
+                                      </div>        
+                                  </div>
+                                      <div class="row">
+                                      <div class="col-3 text-center"><label class="form-label" for="{{form.warranty.id_for_label}}">Warranty :</label></div>
+                                      <div class="col"><div class="form-outline mb-4">
+                                          {{form.warranty.error}}                                
+                                          {{form.warranty}}
+                                        </div>
+                                      </div>        
+                                  </div>
+                                      <div class="row">
+                                      <div class="col-3 text-center"><label class="form-label" for="{{form.description.id_for_label}}">Description :</label></div>
+                                      <div class="col"><div class="form-outline mb-4">
+                                          {{form.description.error}}                                
+                                          {{form.description}}
+                                        </div>
+                                      </div>        
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-3 text-center"> <label class="form-label" for="{{form.orginalprice.id_for_label}}">Price:</label></div>
+                                    <div class="col">
+                                        <div class="form-outline mb-4 relative" >
+                                        {{form.orginalprice.error}}                            
+                                        {{form.orginalprice}}
+                                      </div>
+                                    </div>
+                                </div>
+                                  <div class="row">
+                                    <div class="col-3 text-center"> <label class="form-label" for="{{form.price.id_for_label}}">Offer Price:</label></div>
+                                    <div class="col">
+                                        <div class="form-outline mb-4 relative" >
+                                        {{form.price.error}}                            
+                                        {{form.price}}
+                                      </div>
+                                    </div>
+                                </div>
+                              <div class=" text-center">
+                                <button class="btn btn-info ">Update</button>
+                              </div>
+                            </form>
+                          </div>
+                          </div>
+        </div>
+  
+
+
+{% endblock store %}

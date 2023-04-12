@@ -1,0 +1,25 @@
+from django.db import models
+from accounts.models import *
+
+# Create your models here.
+
+
+class Product(models.Model):
+    productname=models.CharField(max_length=200)
+    image=models.FileField(upload_to="product_image")    
+    model=models.CharField(max_length=100)    
+    ram=models.IntegerField()
+    rom=models.IntegerField()
+    battery=models.CharField(max_length=50,null=True)
+    warranty=models.CharField(max_length=50)
+    datetime=models.DateTimeField(auto_now_add=True)
+    description=models.TextField(max_length=500,null=True)
+    orginalprice=models.IntegerField(null=True)
+    price=models.IntegerField(null=True)
+    user=models.ForeignKey(CustUser,on_delete=models.CASCADE,related_name="p_user")
+
+class Profile(models.Model):
+    image=models.ImageField(upload_to="profile_pic",null=True)
+    user=models.OneToOneField(CustUser,on_delete=models.CASCADE,related_name="p_pic",null=True)
+   
+# Create your models here.

@@ -1,0 +1,33 @@
+{% extends 'storehome.html' %}
+{% block store %}
+<h1 class="text-center text-white" style=" letter-spacing: 1px;font-family:'Times New Roman', Times, serif;font-weight: bold;">Reviews</h1>
+
+<div class="row" style="width: 100%;">
+    {% for i in data %}
+    <div class="col-lg-3 " >
+      <div class="card mt-2 ml-1"   >
+        <div class="card card-body">
+            <h5 class="card-title text-center">{{i.productname}}</h5>
+            <img src="{{ i.image.url }}" class="card-img-top" alt="..." height="200px" width="250px">
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item">Model:{{i.model}}</li>
+            <a class="btn btn-info " data-toggle="collapse" href="#k{{i.id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Reviews
+            </a>
+          <div class="collapse" id="k{{i.id}}">
+            {% for j in cdata%}
+            {% if j.product.id == i.id %}
+            <li class="list-group-item">{{j.review}}</li>
+            <li class="list-group-item"><strong>Posted On:</strong>{{j.datetime}}</li>
+            <li class="list-group-item"><strong>Posted By:</strong>{{request.user.first_name}} {{request.user.last_name}}</li>
+            {% endif %}
+            {% endfor %}
+            </div>
+            
+          </ul>        
+        </div>      
+   </div>
+ </div>
+{% endfor %}
+</div>
+{% endblock store %}

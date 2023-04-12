@@ -1,0 +1,19 @@
+.bg-image-vertical {
+    position: relative;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size:  100%;
+    }
+    
+    @media (min-width: 800px) {
+    .h-custom-2 {
+    height: 100%;
+    }
+    }
+
+    /* div.row {
+        background-image: url(log1.jpg);
+        opacity: 0.5;
+       } */
+

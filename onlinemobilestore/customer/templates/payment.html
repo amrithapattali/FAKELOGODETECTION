@@ -1,0 +1,68 @@
+{% extends 'userhome.html' %}
+{% block user %}
+<h3 class="fw-normal text-light text-center " style="letter-spacing: 1px;font-family: 'Times New Roman', Times, serif;font-weight: bold;">Payment Details</h3>
+
+<div class="card ml-1 mt-1 " style="width: 90%;height: 450px;">
+{% for i in data %}
+
+<form action="{% url 'pay' i.id %}" style="width: 23rem;" method="post" class="ml-3">
+    {% csrf_token %}
+  <br>
+
+  
+   <!-- <div class="row">
+   <div class="col"> -->
+    <div class="row">
+      <div class="col-6 text-center"><label class="form-label" for="{{form.quantity.id_for_label}}">Quantity :</label></div>
+      <div class="col-6" >
+           <div class="form-inline mb-4 " >
+            {{form.quantity.error}}
+            {{form.quantity}}
+        </div></div>                     
+      </div>
+    <div class="row">
+        <div class="col-6 text-center"> <label class="form-label" for="{{form.bank.id_for_label}}">Bank:</label></div>
+        <div class="col-6">
+            <div class="form-outline mb-4 relative" >
+            {{form.bank.error}}                            
+            {{form.bank}}
+          </div>
+        </div>
+    </div>
+  <div class="row">
+   <div class="col-6 text-center"><label class="form-label" for="{{form.acholdername.id_for_label}}">Account Holder:</label></div>
+   <div class="col-6" >
+        <div class="form-inline mb-4 " >
+       {{form.acholdername.error}}                         
+       {{form.acholdername}}
+     </div></div>                     
+   </div>
+   
+   <div class="row">
+       <div class="col-6 text-center"><label class="form-label" for="{{form.accno.id_for_label}}">Account Number:</label></div>
+       <div class="col-6">
+           <div class="form-outline mb-4">
+               {{form.accno.error}} 
+               {{form.accno}}
+             </div>
+       </div>
+   </div>
+
+   <div class="row">
+       <div class="col-6 text-center"><label class="form-label" for="{{form.ifsc.id_for_label}}">IFSC Code:</label></div>
+       <div class="col-6"><div class="form-outline mb-4">
+           {{form.ifsc.error}}                          
+           {{form.ifsc}}
+         </div>
+       </div>
+   </div>
+   
+   <div class="pt-1 mb-4 text-center">
+     <a href=""><button class="btn btn-info ">Confirm</button></a>
+   </div>
+   </div>
+   </div>
+ </form>
+{% endfor %}
+</div>
+{% endblock user %}

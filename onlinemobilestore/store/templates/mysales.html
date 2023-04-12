@@ -1,0 +1,39 @@
+{% extends 'storehome.html' %}
+{% block store %}
+<h1 class="text-light text-center" >
+  My Orders
+</h1>
+<div class="row" style="width: 100%;">
+    {% for i in cdata %}  
+    {% for j in data %}
+    {% if i.id == j.product.id %}    
+    <div class="col-lg-3 ">
+      <div class="card mt-1 ml-1">
+        <img src="{{ i.image.url }}" class="card-img-top" alt="..." height="200px" width="200px">
+        <div class="card-body">
+          <h5 class="card-title">{{i.productname}}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Model :{{i.model}}</li>
+         
+          <li class="list-group-item">Ram :{{i.ram}}GB</li>
+          <li class="list-group-item">Rom :{{i.rom}}GB</li>
+          <li class="list-group-item">  <h5 class="card-text bold"><span class="material-symbols-outlined">
+            currency_rupee
+            </span>{{i.price}}</h5>
+  </li>
+      
+       
+              <li class="list-group-item bg bg-success">{{j.status}}</li>
+             
+        </ul>
+      
+      </div>
+   </div>
+   {% endif %}
+    {% endfor %}
+    {% endfor %}
+    
+
+</div>
+{% endblock store %}

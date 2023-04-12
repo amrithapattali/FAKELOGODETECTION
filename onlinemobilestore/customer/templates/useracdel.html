@@ -1,0 +1,48 @@
+{% extends 'userhome.html' %}
+{% block user %}
+<h1 class="text-center text-white" style=" letter-spacing: 1px;font-family:'Times New Roman', Times, serif;font-weight: bold;">My Products</h1>
+
+
+
+        <h4 class="ml-2 text-light" >Are you sure to delete this product?</h4>
+{{object.hidden}}
+<div class="card ml-2" style="width: 90%;height: 480px;">
+
+  
+  
+  <div class="container" style="position: relative;">
+    {% if request.user.p_pic.image %}
+    <img class="card-img-top rounded-circle " src="{{ request.user.p_pic.image.url }}" alt="Card image cap" style="height: 200px;width: 200px;">
+   {% endif %}
+     
+  </div>
+  
+ 
+    <div class="card-body">
+      <h5 class="card-title">Name : {{ request.user.first_name}} {{ request.user.last_name}}</h5>
+      <!-- <p class="card-text">{{ request.user.gender }}</p> -->
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Address : {{ request.user.address }}</li>
+      <li class="list-group-item">Place : {{ request.user.place }}</li>
+      <li class="list-group-item">Phone : {{ request.user.phone }}</li>
+      <li class="list-group-item">Email : {{ request.user.email }}</li>
+    </ul>
+   
+  </div>
+
+
+        
+        <form method="post">
+            {% csrf_token %}
+            <div class="container text-center mt-2">
+                <button class="btn btn-success">Confirm</button>
+            </div>
+        </form>
+      </div>
+      
+
+
+
+
+{% endblock user %}

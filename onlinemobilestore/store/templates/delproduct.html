@@ -1,0 +1,40 @@
+{% extends 'storehome.html' %}
+{% block store %}
+<h1 class="text-center text-white" style=" letter-spacing: 1px;font-family:'Times New Roman', Times, serif;font-weight: bold;">My Products</h1>
+
+
+
+        <h4 class="ml-2 text-light" >Are you sure to delete this product?</h4>
+{{object.hidden}}
+      <div class="card ml-2 " style="height: 500px;width: 90%;" >
+        <div class="row">
+          <div class="col-4">
+            <img src="{{ object.image.url }}" class="card-img-top mt-1" alt="..." height="400px" width="100px">
+
+          </div>
+          <div class="col mr-2">
+            <div class="card-body">
+              <h5 class="card-title">{{object.productname}}</h5>
+            
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Model :{{object.model}}</li>
+              <li class="list-group-item">Ram :{{object.ram}}GB</li>
+              <li class="list-group-item">Rom :{{object.rom}}GB</li>
+            </ul>
+            </div>
+          </div>
+        </div>
+        
+        <form method="post">
+            {% csrf_token %}
+            <div class="container text-center">
+                <button class="btn btn-success">Confirm</button>
+            </div>
+        </form>
+      </div>
+      
+
+
+
+
+{% endblock store %}

@@ -1,0 +1,37 @@
+{% extends 'userhome.html' %}
+{% block user %}
+<h1 class="text-center text-white" style=" letter-spacing: 1px;font-family:'Times New Roman', Times, serif;font-weight: bold;">
+  Place Order
+</h1>
+      <div class="card mt-1 ml-3 mr-1" style="height: 600px;width: 80%;background-color: rgb(222, 233, 234);">
+        
+        {% for i in data %}
+        <div class="row">
+          <div class="col-lg-5">
+            <img src="{{ i.image.url }}" class="card-img-top " style="margin-top: 25%;" alt="..." height="400px" width="100px">
+          </div>
+          <div class="col" >
+            <div class="card-body">
+              <h2 class="card-title" style="font-family: 'Courier New', Courier, monospace;font-weight: bold;">{{i.productname}}</h2>
+          
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item mt-2 mr-2 jumbotron">Model :{{i.model}}</li>
+    
+              <li class="list-group-item mt-2 mr-2">Ram :{{i.ram}}GB</li>
+              <li class="list-group-item mt-2 mr-2">Rom :{{i.rom}}GB</li>
+              <li class="list-group-item mt-2 mr-2">Description :<br>{{i.description}}</li>
+              <li class="list-group-item bold mt-2 mr-2 "> <span class="material-symbols-outlined">
+                currency_rupee
+                </span>{{i.price}}</li>
+            </ul>
+            <div class="text-center mt-1">
+              <a href="{% url 'viewpay' i.id %}"> <button class=" btn btn-success">confirm</button></a>
+             </div>
+          </div>
+        </div>
+        
+       
+        {% endfor %}
+      </div>
+{% endblock user %}

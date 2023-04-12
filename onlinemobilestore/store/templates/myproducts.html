@@ -1,0 +1,59 @@
+{% extends 'storehome.html' %}
+{% block store %}
+<h1 class="text-center text-white" style=" letter-spacing: 1px;font-family:'Times New Roman', Times, serif;font-weight: bold;">My Products</h1>
+
+<div class="row" style="width: 100%;">
+    {% for i in data %}
+    <div class="col-lg-3 ">
+      <div class="card mt-2 ml-1"   >
+        <div class="card card-body">
+
+          <!-- <a class="" data-toggle="collapse" href="#j{{i.id}}" role="button" aria-expanded="false" aria-controls="collapseExample"> -->
+            <img src="{{ i.image.url }}" class="card-img-top" alt="..." height="150px" width="300px">
+
+          <!-- </a> -->
+          <!-- <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+
+          </button> -->
+        
+        <!-- <div class="collapse" id="j{{i.id}}"> -->
+            <h5 class="card-title text-center">{{i.productname}}</h5>
+          <!-- </div> -->
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Model:{{i.model}}</li>
+            <!-- <li class="list-group-item">{{i.color}}</li> -->
+            <li class="list-group-item">Ram :{{i.ram}}GB</li>
+            <li class="list-group-item">Rom :{{i.rom}}GB</li>
+             
+    
+          </ul>
+          <div class="row mt-1">
+            <div class="col"><h5 class="card-text bold"><span class="material-symbols-outlined">
+              currency_rupee
+              </span>{{i.price}}</h5></div>
+              <div class="col">
+                {% if i.orginalprice %}
+                <h5 class="card-text  text-center  " style="font-family: Arial, Helvetica, sans-serif;font-weight:bold;text-decoration: line-through;color: green;"  ><span class="material-symbols-outlined">
+                  currency_rupee
+                  </span>{{i.orginalprice}}</h5>
+                  {% endif %}
+              </div>
+          </div>
+          
+          
+          <!-- </div> -->
+        <!-- </div> -->
+        <!-- <div class="card-body">     -->
+          <div class="row mt-1">
+            <div class="col text-center"><a href="{% url 'upproduct' i.id %}" class="btn btn-info">Update</a></div>
+            <div class="col text-center"> <a href="{% url 'delproduct' i.id %}" class="btn btn-danger">Delete</a></div>
+          </div>       
+      </div>
+</div>
+</div>
+    
+        
+
+{% endfor %}
+</div>
+{% endblock store %}
