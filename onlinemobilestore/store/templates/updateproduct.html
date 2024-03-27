@@ -45,8 +45,8 @@
                                   <div class="col-3 text-center"><label class="form-label" for="{{form.ram.id_for_label}}">RAM :</label></div>
                                   <div class="col">
                                       <div class="form-outline mb-4">
-                                          {{form.ram.error}} 
-                                          {{form.ram}} 
+                                          {{form.color.error}} 
+                                          {{form.color}} 
                                         </div>
                                   </div>
                               </div>
@@ -54,14 +54,14 @@
                                       <div class="row">
                                       <div class="col-3 text-center"><label class="form-label" for="{{form.rom.id_for_label}}">ROM:</label></div>
                                       <div class="col"><div class="form-outline mb-4">
-                                          {{form.rom.error}}                                
-                                          {{form.rom}}
+                                          {{form.color.error}}                                
+                                          {{form.size}}
                                         </div>
                                       </div>                          
                                       </div>                          
                                  
                                   
-                                      <div class="row">
+                                      {% comment %} <div class="row">
                                       <div class="col-3 text-center"><label class="form-label" for="{{form.battery.id_for_label}}">Battery :</label></div>
                                       <div class="col"><div class="form-outline mb-4">
                                           {{form.battery.error}}                                
@@ -74,7 +74,7 @@
                                       <div class="col"><div class="form-outline mb-4">
                                           {{form.warranty.error}}                                
                                           {{form.warranty}}
-                                        </div>
+                                        </div> {% endcomment %}
                                       </div>        
                                   </div>
                                       <div class="row">

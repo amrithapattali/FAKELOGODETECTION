@@ -11,7 +11,8 @@ class Review(models.Model):
     product=models.ForeignKey(Product,on_delete=models.CASCADE,related_name="r_user")  
     user=models.ForeignKey(CustUser,on_delete=models.CASCADE,related_name="c_user") 
 
-  
+    def __str__(self):
+        return self.review
     
 
 class Payment(models.Model):
@@ -23,10 +24,9 @@ class Payment(models.Model):
     product=models.ForeignKey(Product,on_delete=models.CASCADE,related_name="p_payment",null=True)
     quantity=models.PositiveBigIntegerField(null=True)
     status=models.CharField(max_length=100,null=True)
-
-
-
-
+    
+    def __str__(self):
+        return self.acholdername
 
 
 
@@ -37,4 +37,7 @@ class Cart(models.Model):
     status=models.CharField(max_length=100)
     product=models.ForeignKey(Product,on_delete=models.CASCADE,related_name="c_product")   
     user=models.ForeignKey(CustUser,on_delete=models.CASCADE,related_name="cart_user")
+    
+    def __str__(self):
+        return self.product.productname
    
