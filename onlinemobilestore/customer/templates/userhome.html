@@ -1,4 +1,5 @@
 <!doctype html>
+{% load static %}
 <html lang="en">
   <head>
     <title>Title</title>
@@ -14,52 +15,61 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,500,1,200" /></head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,200" />
+    <link rel="stylesheet" href="{% static 'css/leftnav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dropdown.css' %}">
     <body >
-      {% load static %}
       
-      <link rel="stylesheet" href="{% static 'css/leftnav.css' %}">
-      <link rel="stylesheet" href="{% static 'css/dropdown.css' %}">
+      
+      
       <!-- <link rel="stylesheet" href="{% static 'css/userhom.css' %}"> -->
       <nav id="leftnav" class="nav-menu navbar ">
         <header id="header" >
           <div class="d-flex flex-column " style="height: 750px;">
-        <div class="profile-card mt-3" style="margin-left: 50px;">
-          {% if request.user.p_pic.image %}
+            <div class="profile-card mt-3" style="margin-left: 30px;">
+              {% if request.user.p_pic.image %}
 
-             <img class="card-img-top rounded-circle " src="{{ request.user.p_pic.image.url }}" alt="Card image cap" class="profile-photo" style="height: 150px;width: 150px;;">
+                <img class="card-img-top rounded-circle " src="{{ request.user.p_pic.image.url }}" alt="Card image cap" class="profile-photo" style="height: 150px;width: 150px;;">
 
-             {% else %}
+                {% else %}
 
-             <img class="card-img-top rounded-circle" src="{% static 'images/demo.png' %}" alt="Card image cap" style="height: 150px;width: 150px;">
+                <img class="card-img-top rounded-circle" src="{% static 'images/demo.png' %}" alt="Card image cap" style="height: 150px;width: 150px;">
 
-             {% endif %}
+                {% endif %}
 
-              <h2 ><a class="text-light mt-1" href="{% url 'upro' %}">{{ request.user.first_name}} {{ request.user.last_name}}</a></h2>  
-              </div>
-       <ul >
-           <li><a href="{% url 'uh' %}" class="nav-link scrollto active text-light "><span class="material-symbols-outlined">
-               home
-               </span> <span class="ml-1"> Home</span></a></li>
-       <li><a href="{% url 'cart' %}" class="nav-link scrollto text-light ml-2"  ><span class="material-symbols-outlined">
-        shopping_cart
-        </span> <span class="ml-1"> My Cart</span></a></li>
-       <li><a href="{% url 'mypur' %}" class="nav-link scrollto text-light ml-4"><span class="material-symbols-outlined">
-        order_approve
-        </span> My Orders</a></li>
-       <!-- <li><a href="#portfolio" class="nav-link scrollto text-light "><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
-       <li><a href="#services" class="nav-link scrollto text-light "><i class="bx bx-server"></i> <span>Services</span></a></li> -->
-       <!-- <li><a href="{% url 'logout' %}" class="nav-link scrollto text-light ml-1"><span class="material-symbols-outlined">
-        logout
-        </span><span>Log Out</span></a></li> -->
-       </ul>
-      </div>
-    </header>
-    </nav>
+                  <h2 ><a class="text-light mt-1" href="{% url 'upro' %}">{{ request.user.first_name}} {{ request.user.last_name}}</a></h2>  
+            </div>
+            <ul >
+                <li>
+                  <a href="{% url 'uh' %}" class="nav-link scrollto active text-light ">
+                    <span class="material-symbols-outlined">home</span> 
+                    <span class="ml-1"> Home</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'cart' %}" class="nav-link scrollto text-light ml-2"  >
+                    <span class="material-symbols-outlined">shopping_cart</span> 
+                    <span class="ml-1"> My Cart</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'mypur' %}" class="nav-link scrollto text-light ml-4">
+                    <span class="material-symbols-outlined">order_approve</span> My Orders
+                  </a>
+                </li>
+            <!-- <li><a href="#portfolio" class="nav-link scrollto text-light "><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+            <li><a href="#services" class="nav-link scrollto text-light "><i class="bx bx-server"></i> <span>Services</span></a></li> -->
+            <!-- <li><a href="{% url 'logout' %}" class="nav-link scrollto text-light ml-1"><span class="material-symbols-outlined">
+              logout
+              </span><span>Log Out</span></a></li> -->
+            </ul>
+          </div>
+        </header>
+      </nav>
  
-    <div class="box" style="background-color: gray;" >
-      <nav class="navbar   navbar-light sticky-top " style="background-color:rgb(179, 217, 224);position:relative sticky-top ;width: 100%;height: 80px;">
+    <div class="box" style="" >
+      <nav class="navbar   navbar-light sticky-top " style="position:relative sticky-top ;width: 100%;height: 80px;">
                     <img src="{% static 'images/logo.png' %}" alt="" height="60px">
-                        <h2 style="text-align: left; letter-spacing: 1px;font-family:fantasy;font-weight: bold;">The shoes for new trends</h2>
+                        <h2 style="text-align: left; letter-spacing: 1px;font-family:fantasy;font-weight: bold;">The New Trends</h2>
                       <!-- <input type="text" placeholder="Search..">               -->
                       <div class="dropdown">
                         <button class="dropbtn" > <a class="nav-link text-light " href=""><span class="material-symbols-outlined">
@@ -114,7 +124,7 @@
                     <img class="d-block w-40" src="{% static 'images/add5.jpg' %}" alt="Third slide" style="margin-left: 32%;height: 550px;margin-top: 50px;">
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block w-40" src="{% static 'images/coppy1.jpg' %}" alt="Third slide" style="margin-left: 10%;height: 550px;margin-top: 50px;">
+                    <img class="d-block w-40" src="{% static 'images/add1.jpg' %}" alt="Third slide" style="margin-left: 10%;height: 550px;margin-top: 50px;">
                   </div>
                   <div class="carousel-item">
                     <img class="d-block w-40" src="{% static 'images/coppy1.jpg' %}" alt="Third slide" style="margin-left: 16%;height: 550px;margin-top: 50px;">

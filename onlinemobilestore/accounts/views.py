@@ -17,9 +17,11 @@ class LogView(FormView):
             ps=formlog.cleaned_data.get("password")
             user=authenticate(request,username=un,password=ps)
             if user:
-                login(request,user)
-                if request.user.usertype == "Store" :
-                      return  redirect("sh")
+                login(request, user)
+                if user.is_staff:
+                    return redirect('/admin/')  # Redirect to the admin dashboard
+                elif user.usertype == "Store":
+                    return redirect("sh")
                 else:
                     return redirect("uh")
             else:
@@ -42,5 +44,21 @@ class LogOut(View):
     def get(self,request,*args,**kwargs):
         logout(request)
         return redirect("h")    
+    
+def submit_complaint(request):
+    if request.method == 'POST':
+        form = ComplaintForm(request.POST)
+        if form.is_valid():
+            # Save the complaint
+            complaint = form.save(commit=False)
+            complaint.user = request.user
+            complaint.save()
+            return redirect('complaint_success')  # Redirect to a success page or wherever you want
+    else:
+        form = ComplaintForm()
+    return render(request, 'submit_complaint.html', {'form': form})
+
+def complaint_success(request):
+    return render(request, 'complaint_success.html')  # Render a success page
     
 
