@@ -11,7 +11,7 @@ class Product(models.Model):
     color=models.CharField(max_length=100) 
     size=models.IntegerField()
     # battery=models.CharField(max_length=50,null=True)
-    warranty=models.CharField(max_length=50)
+    # warranty=models.CharField(max_length=50)
     datetime=models.DateTimeField(auto_now_add=True)
     description=models.TextField(max_length=500,null=True)
     orginalprice=models.IntegerField(null=True)

@@ -27,11 +27,15 @@ class LogForm(forms.Form):
     username=forms.CharField(max_length=100,widget=forms.TextInput(attrs={"class":"form-control","placeholder":"Username"}))        
     password=forms.CharField(max_length=100,widget=forms.PasswordInput(attrs={"class":"form-control","placeholder":"Password","name":"password"}))    
     
-    
-class ComplaintForm(forms.ModelForm):
-    class Meta:
-        model = Complaint
-        fields = ['complaint_text']
-        widgets = {
-            'complaint_text': forms.Textarea(attrs={'rows': 5}),
-        }    
+
+class ImageUploadForm(forms.Form):
+    keyword = forms.CharField(max_length=100)
+    image = forms.ImageField()
+       
+# class ComplaintForm(forms.ModelForm):
+#     class Meta:
+#         model = Complaint
+#         fields = ['complaint_text']
+#         widgets = {
+#             'complaint_text': forms.Textarea(attrs={'rows': 5}),
+#         }    

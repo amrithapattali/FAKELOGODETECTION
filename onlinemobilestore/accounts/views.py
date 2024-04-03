@@ -39,26 +39,42 @@ class RegView(CreateView):
     success_url=reverse_lazy("h")
 
 
-
 class LogOut(View):
     def get(self,request,*args,**kwargs):
         logout(request)
-        return redirect("h")    
+        return redirect("h")   
     
-def submit_complaint(request):
+def home(request):
     if request.method == 'POST':
-        form = ComplaintForm(request.POST)
+        form = ImageUploadForm(request.POST, request.FILES)
         if form.is_valid():
-            # Save the complaint
-            complaint = form.save(commit=False)
-            complaint.user = request.user
-            complaint.save()
-            return redirect('complaint_success')  # Redirect to a success page or wherever you want
+            keyword = form.cleaned_data['keyword']
+            test_image = form.cleaned_data['image']
+            # Save the uploaded image to a temporary location
+            with open('test_image.jpg', 'wb') as f:
+                for chunk in test_image.chunks():
+                    f.write(chunk)
+            # Perform image similarity calculation
+            similarity_score = calculate_image_similarity('test_image.jpg', keyword)
+            return render(request, 'result.html', {'similarity_score': similarity_score})
     else:
-        form = ComplaintForm()
-    return render(request, 'submit_complaint.html', {'form': form})
+        form = ImageUploadForm()
+    return render(request, 'userhome.html', {'form': form}) 
+    
+# def submit_complaint(request):
+#     if request.method == 'POST':
+#         form = ComplaintForm(request.POST)
+#         if form.is_valid():
+#             # Save the complaint
+#             complaint = form.save(commit=False)
+#             complaint.user = request.user
+#             complaint.save()
+#             return redirect('complaint_success')  # Redirect to a success page or wherever you want
+#     else:
+#         form = ComplaintForm()
+#     return render(request, 'submit_complaint.html', {'form': form})
 
-def complaint_success(request):
-    return render(request, 'complaint_success.html')  # Render a success page
+# def complaint_success(request):
+#     return render(request, 'complaint_success.html')  # Render a success page
     
 

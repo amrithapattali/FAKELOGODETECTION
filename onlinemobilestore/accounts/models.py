@@ -21,10 +21,10 @@ class CustUser(AbstractUser):
     usertype=models.CharField(max_length=100,choices=typeop,default="Customer")
 # Create your models here.
 
-class Complaint(models.Model):
-    user = models.ForeignKey(CustUser, on_delete=models.CASCADE)
-    complaint_text = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
+# class Complaint(models.Model):
+#     user = models.ForeignKey(CustUser, on_delete=models.CASCADE)
+#     complaint_text = models.TextField()
+#     created_at = models.DateTimeField(auto_now_add=True)
 
-    def _str_(self):
-        return f"Complaint by {self.user.username} at {self.created_at}"
+#     def _str_(self):
+#         return f"Complaint by {self.user.username} at {self.created_at}"

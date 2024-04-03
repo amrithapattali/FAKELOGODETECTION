@@ -11,7 +11,7 @@
     position: fixed;
   
     line-height: 60px;
-    background-color: rgb(68, 156, 238);  
+    background-color: rgb(234, 139, 139);  
   }
   
    #leftnav li {
@@ -39,11 +39,11 @@
     width: 80%;
     
     margin-left:20%;
-    background-color: gray;
+    background-color: white;
 }
 
 body {
-  background-color: grey;
+  background-color: rgb(237, 149, 149);
 }
 
 #transition {
