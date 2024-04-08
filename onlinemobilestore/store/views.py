@@ -140,3 +140,4 @@ class AcDelete(DeleteView):
     template_name="storeacdel.html"      
     model=CustUser
     success_url=reverse_lazy("sh")
+    

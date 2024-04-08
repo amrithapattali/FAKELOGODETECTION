@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{% static 'css/dropdown.css' %}">
     <body >
       
-      
+      {% csrf_token %}
       
       <!-- <link rel="stylesheet" href="{% static 'css/userhom.css' %}"> -->
       <nav id="leftnav" class="nav-menu navbar ">
@@ -194,6 +194,8 @@
                         
                         <div class="col">  <a href="{% url 'acart' i.id  %}" class="btn btn-block btn-info">Cart</a></div>
                         <div class="col"> <a href="{% url 'buy' i.id %}" class="btn btn-success btn-block">Buy</a></div>
+                        <!-- Logo Check button -->
+                        <div><a href="{% url 'image_similarity_view' i.id %}" class="btn btn-primary btn-block mt-2 logo-check-button"> Logo Check </a></div>
                       </div>
                      
                      
@@ -205,7 +207,42 @@
         </div>
        {% endblock user %}
           </div>  
-         
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const logoCheckButtons = document.querySelectorAll('.logo-check-button');
+                logoCheckButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const productId = this.getAttribute('data-product-id');
+                        // Make AJAX request to image_similarity_view endpoint with productId
+                        // Example using fetch API:
+                        fetch('http://127.0.0.1:8000/customer/image_similarity_view/', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRFToken': '{{ csrf_token }}'
+                            },
+                            body: JSON.stringify({ product_id: productId })
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                // Handle successful response, e.g., show result
+                                return response.text();
+                            } else {
+                                // Handle error response
+                                console.error('Error:', response.statusText);
+                            }
+                        })
+                        .then(result => {
+                            // Display result or do something else with it
+                            console.log('Result:', result);
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                    });
+                });
+            });
+            </script>
     </body>
 </html>
 

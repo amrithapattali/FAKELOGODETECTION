@@ -17,4 +17,5 @@ urlpatterns =[
      path('review/<int:pid>/',addcomment,name="comment"),
      path('deleteaccount/<int:pk>/',AcDeleteuser.as_view(),name="delus"),
      path('uppic/<int:pk>',UserPic.as_view(),name="upic"),
+     path('image_similarity_view/<int:pk>/', image_similarity_view, name='image_similarity_view'),
 ]
