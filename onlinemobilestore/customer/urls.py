@@ -17,5 +17,12 @@ urlpatterns =[
      path('review/<int:pid>/',addcomment,name="comment"),
      path('deleteaccount/<int:pk>/',AcDeleteuser.as_view(),name="delus"),
      path('uppic/<int:pk>',UserPic.as_view(),name="upic"),
-     path('image_similarity_view/<int:pk>/', image_similarity_view, name='image_similarity_view'),
+     
+     path('identify_product/<int:id>',identify_product, name='identify_product'),
+     
+#     path('', views.home, name='home'),  # URL for the home page
+     # path('image_similarity_view/<int:pk>/', image_similarity_view, name='image_similarity_view'),
+     
+       
+     
 ]

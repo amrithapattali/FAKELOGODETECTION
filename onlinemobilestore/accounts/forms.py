@@ -32,10 +32,10 @@ class ImageUploadForm(forms.Form):
     keyword = forms.CharField(max_length=100)
     image = forms.ImageField()
        
-# class ComplaintForm(forms.ModelForm):
-#     class Meta:
-#         model = Complaint
-#         fields = ['complaint_text']
-#         widgets = {
-#             'complaint_text': forms.Textarea(attrs={'rows': 5}),
-#         }    
+class ComplaintForm(forms.ModelForm):
+    class Meta:
+        model = Complaint
+        fields = ['complaint_text']
+        widgets = {
+            'complaint_text': forms.Textarea(attrs={'rows': 5}),
+        }    

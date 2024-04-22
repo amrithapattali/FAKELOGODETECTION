@@ -29,3 +29,4 @@ class CommentForm(forms.ModelForm):
         widgets={
             "review":forms.Textarea(attrs={"class":"form-control","placeholder":"Review","rows":3})
         }
+        

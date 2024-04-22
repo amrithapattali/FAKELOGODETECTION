@@ -4,6 +4,8 @@ from .models import *
 from .forms import *
 from django.urls import reverse_lazy
 from django.contrib.auth import authenticate,login,logout
+from django.http import HttpResponse
+from store.models import Product
 
 # Create your views here.
 
@@ -61,20 +63,27 @@ def home(request):
         form = ImageUploadForm()
     return render(request, 'userhome.html', {'form': form}) 
     
-# def submit_complaint(request):
-#     if request.method == 'POST':
-#         form = ComplaintForm(request.POST)
-#         if form.is_valid():
-#             # Save the complaint
-#             complaint = form.save(commit=False)
-#             complaint.user = request.user
-#             complaint.save()
-#             return redirect('complaint_success')  # Redirect to a success page or wherever you want
-#     else:
-#         form = ComplaintForm()
-#     return render(request, 'submit_complaint.html', {'form': form})
+def submit_complaint(request):
+    if request.method == 'POST':
+        form = ComplaintForm(request.POST)
+        if form.is_valid():
+            # Save the complaint
+            complaint = form.save(commit=False)
+            complaint.user = request.user
+            complaint.save()
+            # Delete the product associated with the complaint
+            product_to_delete = Product.objects.filter(user=request.user).first()
+            if product_to_delete:
+                product_to_delete.delete()
 
-# def complaint_success(request):
-#     return render(request, 'complaint_success.html')  # Render a success page
+            return redirect('complaint_success')
+            
+         
+    else:
+        form = ComplaintForm()
+    return render(request, 'complaint.html', {'form': form})
+
+def complaint_success(request):
+    return render(request, 'complaint_success.html')  # Render a success page
     
 
